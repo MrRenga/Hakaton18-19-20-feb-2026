@@ -29,69 +29,62 @@ data class EnergyData(
 
 @Composable
 fun HomeScreen(data: EnergyData) {
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar()
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Helios",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(vertical = 16.dp)
+        )
+
+        // Central Energy Flow Diagram
+        EnergyFlowDiagram(data)
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Summary Cards Grid
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(
-                text = "Helios",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
-
-            // Central Energy Flow Diagram
-            EnergyFlowDiagram(data)
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Summary Cards Grid
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                item {
-                    StatusCard(
-                        title = "Produzione",
-                        value = "${data.produzione} kW",
-                        icon = Icons.Default.ThumbUp, // Icona standard
-                        iconColor = Color(0xFFFFB300)
-                    )
-                }
-                item {
-                    StatusCard(
-                        title = "Consumo",
-                        value = "${data.consumo} kW",
-                        icon = Icons.Default.Home,
-                        iconColor = Color(0xFFE57373)
-                    )
-                }
-                item {
-                    StatusCard(
-                        title = "Rete (Vendita)",
-                        value = "${if (data.rete >= 0) "+" else ""}${data.rete} kW",
-                        icon = Icons.Default.Info, // Icona standard
-                        iconColor = Color(0xFF7986CB)
-                    )
-                }
-                item {
-                    StatusCard(
-                        title = "Batteria",
-                        value = "${data.batteriaPercentuale}%",
-                        icon = Icons.Default.KeyboardArrowUp, // Icona standard
-                        iconColor = Color(0xFF81C784)
-                    )
-                }
+            item {
+                StatusCard(
+                    title = "Produzione",
+                    value = "${data.produzione} kW",
+                    icon = Icons.Default.Star,
+                    iconColor = Color(0xFFFFB300)
+                )
+            }
+            item {
+                StatusCard(
+                    title = "Consumo",
+                    value = "${data.consumo} kW",
+                    icon = Icons.Default.Home,
+                    iconColor = Color(0xFFE57373)
+                )
+            }
+            item {
+                StatusCard(
+                    title = "Rete (Vendita)",
+                    value = "${if (data.rete >= 0) "+" else ""}${data.rete} kW",
+                    icon = Icons.Default.Refresh,
+                    iconColor = Color(0xFF7986CB)
+                )
+            }
+            item {
+                StatusCard(
+                    title = "Batteria",
+                    value = "${data.batteriaPercentuale}%",
+                    icon = Icons.Default.Favorite,
+                    iconColor = Color(0xFF81C784)
+                )
             }
         }
     }
@@ -161,8 +154,8 @@ fun EnergyFlowDiagram(data: EnergyData) {
             modifier = Modifier.align(Alignment.CenterEnd),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Default.Info, contentDescription = null, tint = Color(0xFF7986CB), modifier = Modifier.size(40.dp))
-            Text("Rete (Vendita)", fontSize = 12.sp)
+            Icon(Icons.Default.Refresh, contentDescription = null, tint = Color(0xFF7986CB), modifier = Modifier.size(40.dp))
+            Text("Rete", fontSize = 12.sp)
             Text("${if (data.rete >= 0) "+" else ""}${data.rete} kW", fontWeight = FontWeight.Bold)
         }
 
@@ -171,7 +164,7 @@ fun EnergyFlowDiagram(data: EnergyData) {
             modifier = Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Default.KeyboardArrowUp, contentDescription = null, tint = Color(0xFF81C784), modifier = Modifier.size(40.dp))
+            Icon(Icons.Default.Favorite, contentDescription = null, tint = Color(0xFF81C784), modifier = Modifier.size(40.dp))
             Text("Batteria", fontSize = 12.sp)
             Text("${data.batteriaPercentuale}%", fontWeight = FontWeight.Bold)
             Text("Autonomia: ${data.batteriaAutonomia}", fontSize = 10.sp, color = Color.Gray)
@@ -205,34 +198,5 @@ fun StatusCard(title: String, value: String, icon: ImageVector, iconColor: Color
                 Text(text = value, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
         }
-    }
-}
-
-@Composable
-fun BottomNavigationBar() {
-    NavigationBar(
-        containerColor = Color.White,
-        tonalElevation = 8.dp
-    ) {
-        NavigationBarItem(
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-            selected = true,
-            onClick = { }
-        )
-        NavigationBarItem(
-            icon = { Icon(Icons.Default.Refresh, contentDescription = "Stats") },
-            selected = false,
-            onClick = { }
-        )
-        NavigationBarItem(
-            icon = { Icon(Icons.Default.Build, contentDescription = "Devices") },
-            selected = false,
-            onClick = { }
-        )
-        NavigationBarItem(
-            icon = { Icon(Icons.Default.Menu, contentDescription = "Charts") },
-            selected = false,
-            onClick = { }
-        )
     }
 }
