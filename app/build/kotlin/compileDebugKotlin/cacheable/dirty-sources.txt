@@ -1,0 +1,8 @@
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\ui\theme\Theme.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\AdvisorScreen.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\ui\theme\Type.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\HomeScreen.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\MainActivity.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\ui\theme\Color.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\WeatherScreen.kt
+C:\Users\ricca\AndroidStudioProjects\Hakaton18-19-20-feb-2026\app\src\main\java\com\example\pannellisolari\HistoryScreen.kt
