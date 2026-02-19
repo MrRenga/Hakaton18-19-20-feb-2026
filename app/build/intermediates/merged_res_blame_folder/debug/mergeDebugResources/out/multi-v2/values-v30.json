@@ -4,7 +4,7 @@
             "outputFile": "com.example.pannellisolari.app-mergeDebugResources-43:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ricca\\.gradle\\caches\\9.2.1\\transforms\\7ff641f8f292603c9e7e766394091837\\workspace\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "/home/SirRenga/.gradle/caches/9.2.1/transforms/7ff641f8f292603c9e7e766394091837/transformed/material3-release/res/values-v30/values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
