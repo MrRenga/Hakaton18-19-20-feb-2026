@@ -31,17 +31,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         
-        val exampleData = EnergyData(
-            produzione = 5.2,
-            consumo = 1.8,
-            rete = 3.4,
-            batteriaPercentuale = 85,
-            batteriaAutonomia = "6h 30m"
-        )
+        // Leggi i dati dai file CSV negli assets
+        val energyData = try {
+            CsvReader.readEnergyData(this)
+        } catch (e: Exception) {
+            // Fallback in caso di errore (es. file mancanti)
+            EnergyData(0.0, 0.0, 0.0, 0, "N/A")
+        }
 
         setContent {
             PannelliSolariTheme {
-                MainScreen(exampleData)
+                MainScreen(energyData)
             }
         }
     }

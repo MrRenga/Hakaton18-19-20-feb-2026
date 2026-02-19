@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pannellisolari.app-mergeDebugResources-44:/values-v30/values-v30.xml",
+            "outputFile": "com.example.pannellisolari.app-mergeDebugResources-50:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "/home/SirRenga/.gradle/caches/9.2.1/transforms/d9c05b12f45bf58623f3800090ee127e/transformed/material3-release/res/values-v30/values-v30.xml",
+                    "source": "C:\\Users\\ricca\\.gradle\\caches\\9.2.1\\transforms\\a0610f117585529060a40849452b15ab\\workspace\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
