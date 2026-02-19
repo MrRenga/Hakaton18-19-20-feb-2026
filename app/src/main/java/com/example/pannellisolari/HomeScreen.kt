@@ -1,7 +1,6 @@
 package com.example.pannellisolari
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -13,15 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.material.icons.automirrored.filled.ShowChart
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 
 data class EnergyData(
     val produzione: Double,
@@ -68,7 +64,7 @@ fun HomeScreen(data: EnergyData) {
                     StatusCard(
                         title = "Produzione",
                         value = "${data.produzione} kW",
-                        icon = Icons.Default.WbSunny,
+                        icon = Icons.Default.ThumbUp, // Icona standard
                         iconColor = Color(0xFFFFB300)
                     )
                 }
@@ -84,7 +80,7 @@ fun HomeScreen(data: EnergyData) {
                     StatusCard(
                         title = "Rete (Vendita)",
                         value = "${if (data.rete >= 0) "+" else ""}${data.rete} kW",
-                        icon = Icons.Default.Power,
+                        icon = Icons.Default.Info, // Icona standard
                         iconColor = Color(0xFF7986CB)
                     )
                 }
@@ -92,7 +88,7 @@ fun HomeScreen(data: EnergyData) {
                     StatusCard(
                         title = "Batteria",
                         value = "${data.batteriaPercentuale}%",
-                        icon = Icons.Default.BatteryFull,
+                        icon = Icons.Default.KeyboardArrowUp, // Icona standard
                         iconColor = Color(0xFF81C784)
                     )
                 }
@@ -109,12 +105,9 @@ fun EnergyFlowDiagram(data: EnergyData) {
             .padding(8.dp),
         contentAlignment = Alignment.Center
     ) {
-        // Central Arrows (Simplified representation with Canvas)
         Canvas(modifier = Modifier.size(150.dp)) {
-            // This is a simplified version of the curved arrows in the image
             val strokeWidth = 4.dp.toPx()
             
-            // Production to Grid (Top to Right)
             drawPath(
                 path = Path().apply {
                     moveTo(size.width / 2, 0f)
@@ -124,7 +117,6 @@ fun EnergyFlowDiagram(data: EnergyData) {
                 style = Stroke(width = strokeWidth)
             )
             
-            // Production to Battery (Top to Bottom)
             drawPath(
                 path = Path().apply {
                     moveTo(size.width / 2, 0f)
@@ -134,7 +126,6 @@ fun EnergyFlowDiagram(data: EnergyData) {
                 style = Stroke(width = strokeWidth)
             )
 
-            // Production to Home (Top to Left)
             drawPath(
                 path = Path().apply {
                     moveTo(size.width / 2, 0f)
@@ -145,13 +136,12 @@ fun EnergyFlowDiagram(data: EnergyData) {
             )
         }
 
-        // Icons around the center
         // Top: Produzione
         Column(
             modifier = Modifier.align(Alignment.TopCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Default.WbSunny, contentDescription = null, tint = Color(0xFFFFB300), modifier = Modifier.size(40.dp))
+            Icon(Icons.Default.Star, contentDescription = null, tint = Color(0xFFFFB300), modifier = Modifier.size(40.dp))
             Text("Produzione", fontSize = 12.sp)
             Text("${data.produzione} kW", fontWeight = FontWeight.Bold)
         }
@@ -171,7 +161,7 @@ fun EnergyFlowDiagram(data: EnergyData) {
             modifier = Modifier.align(Alignment.CenterEnd),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Default.Power, contentDescription = null, tint = Color(0xFF7986CB), modifier = Modifier.size(40.dp))
+            Icon(Icons.Default.Info, contentDescription = null, tint = Color(0xFF7986CB), modifier = Modifier.size(40.dp))
             Text("Rete (Vendita)", fontSize = 12.sp)
             Text("${if (data.rete >= 0) "+" else ""}${data.rete} kW", fontWeight = FontWeight.Bold)
         }
@@ -181,7 +171,7 @@ fun EnergyFlowDiagram(data: EnergyData) {
             modifier = Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(Icons.Default.BatteryFull, contentDescription = null, tint = Color(0xFF81C784), modifier = Modifier.size(40.dp))
+            Icon(Icons.Default.KeyboardArrowUp, contentDescription = null, tint = Color(0xFF81C784), modifier = Modifier.size(40.dp))
             Text("Batteria", fontSize = 12.sp)
             Text("${data.batteriaPercentuale}%", fontWeight = FontWeight.Bold)
             Text("Autonomia: ${data.batteriaAutonomia}", fontSize = 10.sp, color = Color.Gray)
@@ -230,17 +220,17 @@ fun BottomNavigationBar() {
             onClick = { }
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.WbSunny, contentDescription = "Stats") },
+            icon = { Icon(Icons.Default.Refresh, contentDescription = "Stats") },
             selected = false,
             onClick = { }
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Lightbulb, contentDescription = "Devices") },
+            icon = { Icon(Icons.Default.Build, contentDescription = "Devices") },
             selected = false,
             onClick = { }
         )
         NavigationBarItem(
-            icon = { Icon(Icons.AutoMirrored.Filled.ShowChart, contentDescription = "Charts") },
+            icon = { Icon(Icons.Default.Menu, contentDescription = "Charts") },
             selected = false,
             onClick = { }
         )
