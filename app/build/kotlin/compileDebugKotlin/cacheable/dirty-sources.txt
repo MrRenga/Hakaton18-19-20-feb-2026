@@ -1,5 +1,0 @@
-/home/SirRenga/StudioProjects/Hakaton18-19-20-feb-2026/app/src/main/java/com/example/pannellisolari/ui/theme/Color.kt
-/home/SirRenga/StudioProjects/Hakaton18-19-20-feb-2026/app/src/main/java/com/example/pannellisolari/ui/theme/Type.kt
-/home/SirRenga/StudioProjects/Hakaton18-19-20-feb-2026/app/src/main/java/com/example/pannellisolari/ui/theme/Theme.kt
-/home/SirRenga/StudioProjects/Hakaton18-19-20-feb-2026/app/src/main/java/com/example/pannellisolari/MainActivity.kt
-/home/SirRenga/StudioProjects/Hakaton18-19-20-feb-2026/app/src/main/java/com/example/pannellisolari/HomeScreen.kt
